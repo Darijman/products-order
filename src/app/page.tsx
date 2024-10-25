@@ -3,7 +3,6 @@
 import { ProductCard } from '../components/productCard/ProductCard';
 import { Product } from '../interfaces/Product';
 import { Categories } from '../interfaces/Product';
-import { Header } from '../ui/header/Header';
 
 const product: Product = {
   id: '1',
@@ -18,8 +17,7 @@ const product: Product = {
 export default function Home() {
   return (
     <div>
-      <Header />
-      {/* <ProductCard product={product} /> */}
+      <ProductCard product={product} />
       {/* <h1>Lorem ipsum dolor sit amet.</h1>
       <h2>Lorem ipsum dolor sit amet.</h2>
       <h3>Lorem ipsum dolor sit amet.</h3>
