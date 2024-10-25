@@ -1,23 +1,11 @@
 'use client';
 
-import { ProductCard } from '../components/productCard/ProductCard';
-import { Product } from '../interfaces/Product';
-import { Categories } from '../interfaces/Product';
-
-const product: Product = {
-  id: '1',
-  title: 'Banana Milk',
-  description: 'Famous korean banan milk. Suits to every meal!',
-  price: 500,
-  category: Categories.FOOD,
-  amount: 0,
-  image: '/img/banana-milk.jpg',
-};
+import { Products } from './products/Products';
 
 export default function Home() {
   return (
     <div>
-      <ProductCard product={product} />
+      <Products />
       {/* <h1>Lorem ipsum dolor sit amet.</h1>
       <h2>Lorem ipsum dolor sit amet.</h2>
       <h3>Lorem ipsum dolor sit amet.</h3>
