@@ -5,5 +5,5 @@ export interface Order {
   products: Product[];
   address: string;
   deliveryDate: Date;
-  delivered: boolean;
+  isDelivered: boolean;
 }

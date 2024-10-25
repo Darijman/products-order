@@ -1,7 +1,7 @@
 import { Inconsolata } from 'next/font/google';
-import "./globals.css";
+import './globals.css';
 
-const inconsolata = Inconsolata({ subsets: ['latin'] })
+const inconsolata = Inconsolata({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
@@ -9,10 +9,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inconsolata.className}>
-        {children}
-      </body>
+    <html lang='en'>
+      <body className={inconsolata.className}>{children}</body>
     </html>
   );
 }
