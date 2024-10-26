@@ -1,0 +1,68 @@
+.cart_item {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  width: 550px;
+}
+
+.cart_item_title, .cart_item_price, .cart_item_category {
+  margin: 0px;
+}
+
+.cart_item_category {
+  opacity: 0.5;
+}
+
+.cart_item_amount {
+  display: flex;
+  align-items: center;
+}
+
+.cart_item_product_amount {
+  width: 20px;
+  margin: 0px 10px;
+}
+
+.cart_item_decrease_button, .cart_item_increase_button {
+  border: none;
+  background-color: #FFFFFF;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 0px;
+  margin: 0px;
+  cursor: pointer;
+}
+
+.cart_item_product_amount {
+  border: 1px solid rgb(218, 218, 218);
+  text-align: center;
+}
+
+.cart_item_delete_button {
+  background-color: #FFFFFF;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.cart_item_delete_button::before {
+  content: '';
+  background: url('../../../../public/img/delete-icon.svg') no-repeat center center;
+  background-size: contain;
+  width: 25px;
+  height: 25px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.cart_item_delete_button:hover::before {
+  opacity: 0.5;
+}
+

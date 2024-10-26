@@ -1,0 +1,16 @@
+.cart {
+  border: 3px solid rgb(218, 218, 218);
+  padding: 20px 40px;
+  border-radius: 30px;
+}
+
+.cart_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.cart_products_amount {
+  opacity: 0.5;
+}

@@ -1,15 +1,16 @@
 'use client';
 
 import './header.css';
+import Link from 'next/link';
 
 const categories: { id: string; category: string }[] = [
-  { id: '1', category: 'FOOD' },
-  { id: '2', category: 'HOUSE' },
-  { id: '3', category: 'SPORT' },
-  { id: '4', category: 'CLOTHES' },
-  { id: '5', category: 'FURNITURE' },
-  { id: '6', category: 'BOOKS' },
-  { id: '7', category: 'CHILDREN' },
+  { id: '1', category: 'Food' },
+  { id: '2', category: 'House' },
+  { id: '3', category: 'Sport' },
+  { id: '4', category: 'Clothes' },
+  { id: '5', category: 'Furniture' },
+  { id: '6', category: 'Books' },
+  { id: '7', category: 'Children' },
 ];
 
 export const Header = () => {
@@ -19,9 +20,9 @@ export const Header = () => {
         <nav className='header_nav'>
           <ul className='header_list'>
             <li className='header_list_item'>
-              <a href='/' className='nav_link'>
+              <Link href='/' className='nav_link'>
                 Products Order
-              </a>
+              </Link>
             </li>
             <li className='header_list_item'>
               <div className='nav_link_caret'>
@@ -43,10 +44,11 @@ export const Header = () => {
             </li>
           </ul>
           <ul className='header_list'>
+            <li className='header_list_item shopping_cart'>Shopping Cart</li>
             <li className='header_list_item'>
-              <a href='/' className='nav_link'>
+              <Link href='/' className='nav_link'>
                 Home
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

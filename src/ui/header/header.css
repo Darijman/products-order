@@ -41,6 +41,11 @@
   position: relative;
 }
 
+.header_list_item {
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
 .header_list_item:hover {
   opacity: 0.7;
 }
@@ -92,4 +97,21 @@
   visibility: visible;
   transform: translateY(25px);
   opacity: 1;
+}
+
+.shopping_cart {
+  position: relative;
+  padding: 8px 0px 8px 40px;
+}
+
+.shopping_cart::before {
+  content: '';
+  background: url('/img/cart-icon.png') no-repeat center center;
+  background-size: 20px 20px;
+  position: absolute;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  transition: filter 0.2s ease-in-out;
+  filter: invert(1) brightness(2);
 }

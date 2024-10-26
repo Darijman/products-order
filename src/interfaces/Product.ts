@@ -1,11 +1,11 @@
 export enum Categories {
-  FOOD = 'FOOD',
-  HOUSE = 'HOUSE',
-  SPORT = 'SPORT',
-  CLOTHES = 'CLOTHES',
-  FURNITURE = 'FURNITURE',
-  BOOKS = 'BOOKS',
-  CHILDREN = 'CHILDREN',
+  Food = 'Food',
+  House = 'House',
+  Sport = 'Sport',
+  Clothes = 'Clothes',
+  Furniture = 'Furniture',
+  Books = 'Books',
+  Children = 'Children',
 }
 
 export interface Product {
