@@ -8,9 +8,9 @@ import './products.css';
 const product: Product = {
   id: '1',
   title: 'Banana Milk',
-  price: 500,
+  price: 2.5,
   category: Categories.Food,
-  amount: 0,
+  amount: 1,
   image: '/img/korean-banana-milk.avif',
 };
 

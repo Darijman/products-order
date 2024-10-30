@@ -1,39 +1,37 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Categories, Product } from '../../interfaces/Product';
+import { Product } from '../../interfaces/Product';
 
 interface CartState {
   products: Product[];
+  shippingPrice: number;
+  setShippingPrice: (price: number) => void;
   addProduct: (product: Product) => void;
   deleteProduct: (productId: string) => void;
   removeOneProduct: (productId: string) => void;
 }
 
-const product: Product = {
-  id: '1',
-  title: 'Banana Milk',
-  price: 500,
-  category: Categories.Food,
-  amount: 2,
-  image: '/img/korean-banana-milk.avif',
-};
-
 export const useCartStore = create<CartState>()(
   persist(
     (set) => ({
-      products: [product, product, product, product],
+      products: [],
+      shippingPrice: 5,
+      setShippingPrice: (price: number) => {
+        set(() => ({ shippingPrice: price }));
+      },
       addProduct: (product: Product) =>
         set((state) => {
           const existingProductIndex = state.products.findIndex((p) => p.id === product.id);
 
-          if (existingProductIndex) {
+          if (existingProductIndex !== -1) {
             const updatedProducts = [...state.products];
-            updatedProducts[existingProductIndex].amount += product.amount;
+            updatedProducts[existingProductIndex].amount += 1;
             return { products: updatedProducts };
           }
 
-          return { products: [...state.products, product] };
+          return { products: [...state.products, { ...product, amount: 1 }] };
         }),
+
       deleteProduct: (productId: string) => {
         set((state) => {
           const updatedProducts = state.products.filter((product) => product.id !== productId);

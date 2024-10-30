@@ -3,9 +3,11 @@
 import { Product } from '../../interfaces/Product';
 import Image from 'next/image';
 import './productCard.css';
+import { useCartStore } from '../../stores/useCartStore/useCartStore';
 
 export const ProductCard = ({ product }: { product: Product }) => {
   const { title, price, image } = product;
+  const { addProduct } = useCartStore();
 
   return (
     <div className='product_background'>
@@ -18,7 +20,9 @@ export const ProductCard = ({ product }: { product: Product }) => {
           <h2 className='product_title'>{title}</h2>
           <div className='product_bottom'>
             <h2 className='product_price'>${price}</h2>
-            <button className='add_to_cart_button'>Add To Cart</button>
+            <button className='add_to_cart_button' onClick={() => addProduct(product)}>
+              Add To Cart
+            </button>
           </div>
         </div>
       </div>
