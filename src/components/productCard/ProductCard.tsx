@@ -1,9 +1,9 @@
 'use client';
 
 import { Product } from '../../interfaces/Product';
+import { useCartStore } from '../../stores/useCartStore/useCartStore';
 import Image from 'next/image';
 import './productCard.css';
-import { useCartStore } from '../../stores/useCartStore/useCartStore';
 
 export const ProductCard = ({ product }: { product: Product }) => {
   const { title, price, image } = product;

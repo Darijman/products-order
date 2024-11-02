@@ -1,5 +1,17 @@
-.products_title {
-  text-align: center;
+.products {
+  margin-bottom: 3%;
+}
+
+.products_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.products_title, .products_total_price {
+  margin: 0px;
+  padding: 0px;
 }
 
 .products_grid {
@@ -7,3 +19,5 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
+
+

@@ -1,9 +1,13 @@
 'use client';
 
-import './header.css';
+import { useCartStore } from '../../stores/useCartStore/useCartStore';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useProductsStore } from '../../stores/useProductsStore/useProductsStore';
 import Link from 'next/link';
+import './header.css';
 
 const categories: { id: string; category: string }[] = [
+  { id: '0', category: 'All' },
   { id: '1', category: 'Food' },
   { id: '2', category: 'House' },
   { id: '3', category: 'Sport' },
@@ -14,29 +18,42 @@ const categories: { id: string; category: string }[] = [
 ];
 
 export const Header = () => {
+  const { setShowCart, cartProducts } = useCartStore();
+  const { setCategory } = useProductsStore();
+  const router = useRouter();
+
+  const searchParams = useSearchParams();
+  const searchCategory = searchParams.get('category') || 'All';
+
+  const cartItemsAmount: number = cartProducts.reduce((acc, product) => acc + product.amount, 0);
+
+  const categoryOnChangeHandler = (category: string) => {
+    if (category === 'All') return router.push(`/products`);
+    router.push(`/products?category=${category}`);
+    setCategory(category);
+  };
+
   return (
     <div className='header_background'>
       <header className='header'>
         <nav className='header_nav'>
           <ul className='header_list'>
             <li className='header_list_item'>
-              <Link href='/' className='nav_link'>
+              <Link href='/products' className='nav_link'>
                 Products Order
               </Link>
             </li>
             <li className='header_list_item'>
-              <div className='nav_link_caret'>
-                <a href='/' className='nav_link'>
-                  Categories
-                </a>
-              </div>
+              <div className='nav_link_caret'>Categories</div>
               <ul className='submenu'>
                 {categories.map((category, index) => {
                   return (
-                    <li className='submenu_item' key={index}>
-                      <a href='/' className='submenu_link'>
-                        {category.category}
-                      </a>
+                    <li
+                      className={`submenu_item ${category.category === searchCategory ? `active` : ``}`}
+                      key={index}
+                      onClick={() => categoryOnChangeHandler(category.category)}
+                    >
+                      {category.category}
                     </li>
                   );
                 })}
@@ -44,7 +61,9 @@ export const Header = () => {
             </li>
           </ul>
           <ul className='header_list'>
-            <li className='header_list_item shopping_cart'>Shopping Cart</li>
+            <li onClick={() => setShowCart(true)} className='header_list_item shopping_cart'>
+              Shopping Cart {cartItemsAmount >= 1 ? `(${cartItemsAmount})` : null}
+            </li>
             <li className='header_list_item'>
               <Link href='/' className='nav_link'>
                 Home

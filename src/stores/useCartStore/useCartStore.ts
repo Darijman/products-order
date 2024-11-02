@@ -3,8 +3,10 @@ import { persist } from 'zustand/middleware';
 import { Product } from '../../interfaces/Product';
 
 interface CartState {
-  products: Product[];
+  cartProducts: Product[];
   shippingPrice: number;
+  showCart: boolean;
+  setShowCart: (showCart: boolean) => void;
   setShippingPrice: (price: number) => void;
   addProduct: (product: Product) => void;
   deleteProduct: (productId: string) => void;
@@ -14,33 +16,39 @@ interface CartState {
 export const useCartStore = create<CartState>()(
   persist(
     (set) => ({
-      products: [],
+      cartProducts: [],
       shippingPrice: 5,
+      showCart: false,
+      setShowCart: (showCart: boolean) => {
+        set(() => ({
+          showCart,
+        }));
+      },
       setShippingPrice: (price: number) => {
         set(() => ({ shippingPrice: price }));
       },
       addProduct: (product: Product) =>
         set((state) => {
-          const existingProductIndex = state.products.findIndex((p) => p.id === product.id);
+          const existingProductIndex = state.cartProducts.findIndex((p) => p.id === product.id);
 
           if (existingProductIndex !== -1) {
-            const updatedProducts = [...state.products];
+            const updatedProducts = [...state.cartProducts];
             updatedProducts[existingProductIndex].amount += 1;
             return { products: updatedProducts };
           }
 
-          return { products: [...state.products, { ...product, amount: 1 }] };
+          return { cartProducts: [...state.cartProducts, { ...product, amount: 1 }] };
         }),
 
       deleteProduct: (productId: string) => {
         set((state) => {
-          const updatedProducts = state.products.filter((product) => product.id !== productId);
-          return { products: updatedProducts };
+          const updatedProducts = state.cartProducts.filter((product) => product.id !== productId);
+          return { cartProducts: updatedProducts };
         });
       },
       removeOneProduct: (productId: string) => {
         set((state) => {
-          const updatedProducts = state.products
+          const updatedProducts = state.cartProducts
             .map((product) => {
               if (product.id === productId) {
                 return {
@@ -52,7 +60,7 @@ export const useCartStore = create<CartState>()(
             })
             .filter((product) => product.amount > 0);
 
-          return { products: updatedProducts };
+          return { cartProducts: updatedProducts };
         });
       },
     }),

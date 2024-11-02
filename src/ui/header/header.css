@@ -78,6 +78,15 @@
   padding: 5px 15px;
   border-radius: 5px;
   cursor: pointer;
+  &:hover {
+    color: black;
+  }
+}
+
+.submenu_item.active {
+  font-weight: bold;
+  color: black;
+  background-color: #FFFFFF;
 }
 
 .submenu_item:hover {
@@ -95,7 +104,7 @@
 
 .header_nav > ul li:hover .submenu {
   visibility: visible;
-  transform: translateY(25px);
+  transform: translateY(20px);
   opacity: 1;
 }
 
