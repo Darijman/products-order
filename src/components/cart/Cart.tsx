@@ -32,7 +32,7 @@ export const Cart = () => {
                 <h1>Shopping Cart</h1>
                 <h3 className='cart_products_amount'>{itemsAmount} items</h3>
               </div>
-              <div className='cart_products'>
+              <div className={`cart_products ${cartProducts.length === 0 ? 'empty' : ''}`}>
                 {cartProducts.map((product, index) => {
                   return <CartItem key={index} product={product} />;
                 })}
@@ -66,11 +66,17 @@ export const Cart = () => {
                   })}
                 </select>
               </div>
-              <div className='give_code'>
-                <label htmlFor='code-input' className='give_code_label'>
-                  GIVE CODE
+              <div className='select_time'>
+                <label htmlFor='time-input' className='give_code_label'>
+                  SELECT TIME
                 </label>
-                <input id='code-input' placeholder='Enter your code' className='give_code_input' />
+                <input id='time-input' placeholder='Please select time' className='select_time_input' type='datetime-local' />
+              </div>
+              <div className='address'>
+                <label htmlFor='address-input' className='address_label'>
+                  ENTER YOUR ADDRESS
+                </label>
+                <input id='address-input' placeholder='Your Address' className='address_input' type='text' maxLength={50} />
               </div>
               <hr />
               <div className='total_info'>

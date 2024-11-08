@@ -18,6 +18,10 @@
   color: #a28089;
 }
 
+.product_background:hover .product_added_mark {
+  color: #a28089;
+}
+
 .product_background:hover .line {
   background-color: #a28089;
 }
@@ -83,10 +87,20 @@
 
 .product_info {
   padding: 10px;
+  position: relative;
 }
 
 .line {
   border: none;
   height: 2px;
   background-color: #5cbdb9;
+}
+
+.product_added_mark {
+  position: absolute;
+  right: 20px;
+  top: -10px;
+  transition: 0.2s ease-in-out;
+  font-size: 50px;
+  color: #5cbdb9;
 }

@@ -8,8 +8,11 @@
 
 .cart_item_category,
 .cart_item_title {
-  min-width: 100px;
+  width: 125px;
   margin: 0px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .cart_item_category {

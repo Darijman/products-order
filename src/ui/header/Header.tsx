@@ -3,6 +3,7 @@
 import { useCartStore } from '../../stores/useCartStore/useCartStore';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useProductsStore } from '../../stores/useProductsStore/useProductsStore';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import './header.css';
 
@@ -21,6 +22,7 @@ export const Header = () => {
   const { setShowCart, cartProducts } = useCartStore();
   const { setCategory } = useProductsStore();
   const router = useRouter();
+  const pathName = usePathname();
 
   const searchParams = useSearchParams();
   const searchCategory = searchParams.get('category') || 'All';
@@ -43,30 +45,32 @@ export const Header = () => {
                 Products Order
               </Link>
             </li>
-            <li className='header_list_item'>
-              <div className='nav_link_caret'>Categories</div>
-              <ul className='submenu'>
-                {categories.map((category, index) => {
-                  return (
-                    <li
-                      className={`submenu_item ${category.category === searchCategory ? `active` : ``}`}
-                      key={index}
-                      onClick={() => categoryOnChangeHandler(category.category)}
-                    >
-                      {category.category}
-                    </li>
-                  );
-                })}
-              </ul>
-            </li>
+            {pathName === '/products' && (
+              <li className='header_list_item'>
+                <div className='nav_link_caret'>Categories</div>
+                <ul className='submenu'>
+                  {categories.map((category, index) => {
+                    return (
+                      <li
+                        className={`submenu_item ${category.category === searchCategory ? `active` : ``}`}
+                        key={index}
+                        onClick={() => categoryOnChangeHandler(category.category)}
+                      >
+                        {category.category}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </li>
+            )}
           </ul>
           <ul className='header_list'>
             <li onClick={() => setShowCart(true)} className='header_list_item shopping_cart'>
               Shopping Cart {cartItemsAmount >= 1 ? `(${cartItemsAmount})` : null}
             </li>
             <li className='header_list_item'>
-              <Link href='/' className='nav_link'>
-                Home
+              <Link href='/orders' className='nav_link'>
+                Your Orders
               </Link>
             </li>
           </ul>

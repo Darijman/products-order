@@ -1,6 +1,7 @@
 import { Inconsolata } from 'next/font/google';
 import './globals.css';
 import { Header } from '../ui/header/Header';
+import { Cart } from '../components/cart/Cart';
 
 const inconsolata = Inconsolata({ subsets: ['latin'] });
 
@@ -13,7 +14,10 @@ export default function RootLayout({
     <html lang='en'>
       <body className={inconsolata.className}>
         <Header />
-        <main>{children}</main>
+        <main>
+          <Cart />
+          {children}
+        </main>
       </body>
     </html>
   );

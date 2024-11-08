@@ -6,8 +6,10 @@ import Image from 'next/image';
 import './productCard.css';
 
 export const ProductCard = ({ product }: { product: Product }) => {
-  const { title, price, image } = product;
-  const { addProduct } = useCartStore();
+  const { id, title, price, image } = product;
+  const { addProduct, cartProducts } = useCartStore();
+
+  const productAdded = cartProducts.some((product) => product.id === id);
 
   return (
     <div className='product_background'>
@@ -18,6 +20,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
         <hr className='line' />
         <div className='product_info'>
           <h2 className='product_title'>{title}</h2>
+          {productAdded ? <span className='product_added_mark'>✓</span> : null}
           <div className='product_bottom'>
             <h2 className='product_price'>${price}</h2>
             <button className='add_to_cart_button' onClick={() => addProduct(product)}>
