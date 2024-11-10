@@ -33,7 +33,7 @@
 .cart_left {
   width: 60%;
   padding: 20px 40px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   overflow: hidden;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .cart_products.empty {
-  overflow-y: hidden; 
+  overflow-y: hidden;
 }
 
 .cart_products::-webkit-scrollbar {
@@ -64,7 +64,7 @@
   position: relative;
   border: none;
   opacity: 0.7;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -121,7 +121,9 @@
   margin-bottom: 50px;
 }
 
-.shipping_label, .give_code_label, .address_label {
+.shipping_label,
+.give_code_label,
+.address_label {
   font-weight: bold;
   text-transform: capitalize;
   opacity: 0.7;
@@ -180,7 +182,7 @@
 .place_order_button {
   text-transform: capitalize;
   background-color: #181414;
-  color: #FFFFFF;
+  color: #ffffff;
   border: 3px solid #181414;
   border-radius: 10px;
   width: 100%;
@@ -236,4 +238,29 @@
   color: #999;
   opacity: 0.7;
   text-transform: capitalize;
+}
+
+.loader_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loader_container {
+  border: 2px solid #18191a;
+  background-color: #18191a;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.loader_title {
+  margin: 0px;
+  color: #FFFFFF;
 }

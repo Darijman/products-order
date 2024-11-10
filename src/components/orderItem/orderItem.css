@@ -1,11 +1,28 @@
 .order_item {
   border: 3px solid #ecebeb;
   border-radius: 10px;
-  transition: 0.2s ease-in-out;
+  transition: border-color 0.2s ease-in-out;
   margin-bottom: 40px;
   padding: 20px;
+
   &:hover {
-    border-color: #A28089;
+    border-color: #a28089;
+  }
+
+  &.delivered {
+    border-color: #5cbdb9;
+  }
+
+  &.delivered .product_line_separator {
+    background-color: #5cbdb9;
+  }
+
+  &:hover .product_line_separator {
+    background-color: #a28089;
+  }
+
+  &.delivered:hover .product_line_separator {
+    background-color: #5cbdb9;
   }
 }
 
@@ -13,10 +30,7 @@
   border: none;
   height: 2px;
   background-color: gray;
-}
-
-.order_item:hover .product_line_separator {
-  background-color: #A28089;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .order_id_title {
@@ -36,13 +50,13 @@
 }
 
 .delivered_button {
-  background-color: #FFFFFF;
-  border: 2px solid #A28089;
+  background-color: #ffffff;
+  border: 2px solid #a28089;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 30px;
-  color: #A28089;
+  color: #a28089;
   border-radius: 10px;
   width: 100px;
   height: 30px;
@@ -55,7 +69,7 @@
 }
 
 .delete_order_button {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   position: relative;
   width: 30px;
   height: 30px;
@@ -114,16 +128,19 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-width: 230px;
+  width: 230px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product_title,
+.product_category {
+  margin: 0px;
 }
 
 .product_category {
   opacity: 0.7;
-  margin: 0px;
-}
-
-.product_title {
-  margin: 0px;
 }
 
 .product_amount {
@@ -132,21 +149,29 @@
   font-size: 20px;
 }
 
-.product_price {
+.product_items_price {
   margin: 0px;
+  color: black;
+  min-width: 60px;
 }
 
 .line_separator {
-  border: 1px solid #A28089;
+  border: 1px solid #a28089;
   width: 0px;
   height: 20px;
 }
 
-.status_title, .shipping_type_title, .address_title, .total_price_title {
+.status_title,
+.shipping_type_title,
+.address_title,
+.total_price_title {
   margin: 0px 0px 5px 0px;
 }
 
-.status_type, .shipping_type, .address_text, .total_price_text {
+.status_type,
+.shipping_type,
+.address_text,
+.total_price_text {
   margin: 0px;
   opacity: 0.6;
 }

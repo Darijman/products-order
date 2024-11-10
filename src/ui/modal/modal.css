@@ -1,0 +1,83 @@
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: #a28089;
+  border-radius: 10px;
+  padding: 20px;
+  width: auto;
+  min-height: 100px;
+  position: relative;
+  color: #ffffff;
+}
+
+.modal_title {
+  margin-top: 30px;
+}
+
+.close_modal_button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #ffffff;
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.modal_content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.confirm_button {
+  color: #ffffff;
+  background-color: #f86c6b;
+  padding: 10px 25px;
+  margin: 10px 0px 10px 0px;
+  border-radius: 10px;
+  border: 2px solid #f86c6b;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.decline_button {
+  color: #FFFFFF;
+  background-color: #5cbdb9;
+  padding: 10px 25px;
+  margin: 10px 0px 10px 0px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid #5cbdb9;
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+@media screen and (max-width: 250px) {
+  .confirm_button,
+  .decline_button {
+    padding: 10px;
+  }
+
+  .modal_title {
+    font-size: 16px;
+  }
+}

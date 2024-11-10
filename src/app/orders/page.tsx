@@ -1,37 +1,60 @@
 'use client';
 
-import { Order } from '../../interfaces/Order';
+import { useMemo } from 'react';
 import { OrderItem } from '../../components/orderItem/OrderItem';
-import { products } from '../../fixtures/products';
+import { useOrdersStore } from '../../stores/useOrdersStore/useOrdersStore';
+import { useRouter, useSearchParams } from 'next/navigation';
 import './orders.css';
 
-const order: Order = {
-  id: '1',
-  products: products,
-  address: 'Pushkina 44',
-  orderPlacedDate: new Date(),
-  deliveryDate: new Date(),
-  isDelivered: false,
-  totalPrice: 500,
-  shippingType: 'FAST',
-};
-
-const orders = [order, order];
-
 const Orders = () => {
+  const { orders } = useOrdersStore();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const sortedByFromURL = searchParams.get('sortedBy') || 'DEFAULT';
+
+  const sortedOrders = useMemo(() => {
+    if (sortedByFromURL === 'DELIVERED') {
+      return [...orders].sort((a, b) => Number(b.isDelivered) - Number(a.isDelivered));
+    }
+
+    if (sortedByFromURL === 'TOTALPRICE') {
+      return [...orders].sort((a, b) => b.totalPrice - a.totalPrice);
+    }
+
+    return orders;
+  }, [orders, sortedByFromURL]);
+
+  const sortedByOnChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newSortBy = e.target.value;
+    if (newSortBy === 'DEFAULT') {
+      router.push(`/orders`);
+    } else {
+      router.push(`/orders?sortedBy=${newSortBy}`);
+    }
+  };
+
   return (
-    <div>
-      <h1 className='orders_title'>Your Orders</h1>
+    <>
       <div>
-        {orders.map((order, index) => {
-          return (
-            <>
-              <OrderItem key={index} order={order} />
-            </>
-          );
-        })}
+        <h1 className='orders_title'>Your Orders {orders.length >= 1 ? `(${orders.length})` : null}</h1>
+        <div style={{ marginBottom: '20px' }}>
+          <label htmlFor='orders_sort' style={{ marginRight: '5px', fontWeight: 'bold', fontSize: '18px' }}>
+            Sort orders:
+          </label>
+          <select id='orders_sort' className='orders_sort' value={sortedByFromURL} onChange={sortedByOnChangeHandler}>
+            <option value='DEFAULT'>By Default</option>
+            <option value='DELIVERED'>By Delivered</option>
+            <option value='TOTALPRICE'>By Total Price</option>
+          </select>
+        </div>
       </div>
-    </div>
+      <div>
+        {sortedOrders.map((order, index) => (
+          <OrderItem key={index} order={order} />
+        ))}
+      </div>
+    </>
   );
 };
 

@@ -7,6 +7,7 @@ interface CartState {
   shippingPrice: number;
   showCart: boolean;
   setShowCart: (showCart: boolean) => void;
+  clearCart: () => void;
   setShippingPrice: (price: number) => void;
   addProduct: (product: Product) => void;
   deleteProduct: (productId: string) => void;
@@ -23,6 +24,13 @@ export const useCartStore = create<CartState>()(
         set(() => ({
           showCart,
         }));
+      },
+      clearCart: () => {
+        set(() => {
+          return {
+            cartProducts: [],
+          };
+        });
       },
       setShippingPrice: (price: number) => {
         set(() => ({ shippingPrice: price }));

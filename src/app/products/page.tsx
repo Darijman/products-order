@@ -18,7 +18,7 @@ const Products = () => {
     <div className='products'>
       <div className='products_top'>
         <h1 className='products_title'>{!category ? 'Products' : `Products → ${category}`}</h1>
-        <h3 className='products_total_price'>Total price $ {totalPrice}</h3>
+        {cartProducts.length ? <h3 className='products_total_price'>Total price $ {totalPrice.toFixed(1)}</h3> : null}
       </div>
       <div className='products_grid'>
         {!category ? (

@@ -1,15 +1,15 @@
 'use client';
 
-import Image from 'next/image';
 import { Product } from '../../../interfaces/Product';
 import { useCartStore } from '../../../stores/useCartStore/useCartStore';
+import Image from 'next/image';
 import './cartItem.css';
 
 export const CartItem = ({ product }: { product: Product }) => {
   const { id, title, category, amount, price, image } = product;
   const { deleteProduct, removeOneProduct, addProduct } = useCartStore();
 
-  const itemPrice = amount * price;
+  const itemPrice = (amount * price).toFixed(1);
 
   return (
     <>
