@@ -18,12 +18,9 @@ function formatCustomDate(date: Date): string {
 
 export const OrderItem = ({ order }: { order: Order }) => {
   const { id, products, address, orderPlacedDate, deliveryDate, isDelivered, shippingType, totalPrice } = order;
-  const { orders, finishOrder, deleteOrder } = useOrdersStore();
+  const { finishOrder, deleteOrder } = useOrdersStore();
   const [showDeletingModal, setShowDeletingModal] = useState<boolean>(false);
   const [showFinishModal, setShowFinishModal] = useState<boolean>(false);
-
-  console.log(`orderPlacedDate`, orderPlacedDate);
-  console.log(`orders`, orders);
 
   const formattedOrderPlacedDate = formatCustomDate(new Date(orderPlacedDate));
   const formateedDeliveryDate = formatCustomDate(new Date(deliveryDate));
@@ -49,11 +46,11 @@ export const OrderItem = ({ order }: { order: Order }) => {
       <div className='order_top'>
         <h2 className='order_id_title'>
           Order ID:
-          <span style={{ marginLeft: 5, opacity: 0.6 }}>{id}</span>
+          <span style={{ marginLeft: 5, opacity: 0.6, wordBreak: 'break-all' }}>{id}</span>
         </h2>
         <h2>
           Items Amount:
-          <span style={{ marginLeft: 5, opacity: 0.6 }}>{itemsAmount}</span>
+          <span style={{ marginLeft: 5, opacity: 0.6, wordBreak: 'break-all' }}>{itemsAmount}</span>
         </h2>
         <div className='order_buttons'>
           {!isDelivered ? (
@@ -75,26 +72,27 @@ export const OrderItem = ({ order }: { order: Order }) => {
             Delivery Date: <span style={{ opacity: 0.6 }}>{formateedDeliveryDate}</span>
           </h3>
         </div>
-        <div className='line_separator'></div>
-        <div>
+        <div className={`line_separator ${isDelivered ? 'delivered' : ''}`}></div>
+        <div className='status_info'>
           <h3 className='status_title'>Status</h3>
           <h4 className='status_type'>{isDelivered ? 'Delivered' : 'Coming'}</h4>
         </div>
-        <div className='line_separator'></div>
-        <div>
+        <div className={`line_separator ${isDelivered ? 'delivered' : ''}`}></div>
+        <div className='shipping_type_info'>
           <h3 className='shipping_type_title'>Shipping Type</h3>
           <h4 className='shipping_type'>{shippingType}</h4>
         </div>
-        <div className='line_separator'></div>
-        <div>
+        <div className={`line_separator ${isDelivered ? 'delivered' : ''}`}></div>
+        <div className='address_info'>
           <h3 className='address_title'>Address</h3>
           <h4 className='address_text'>{address}</h4>
         </div>
-        <div className='line_separator'></div>
-        <div>
+        <div className={`line_separator ${isDelivered ? 'delivered' : ''}`}></div>
+        <div className='total_price_info'>
           <h3 className='total_price_title'>Total Price</h3>
           <h4 className='total_price_text'>$ {totalPrice}</h4>
         </div>
+        <div className={`line_separator ${isDelivered ? 'delivered' : ''}`}></div>
       </div>
       <div>
         <hr className='product_line_separator' />

@@ -19,10 +19,12 @@ export const ProductCard = ({ product }: { product: Product }) => {
         </div>
         <hr className='line' />
         <div className='product_info'>
-          <h2 className='product_title'>{title}</h2>
-          {productAdded ? <span className='product_added_mark'>✓</span> : null}
+          <div className='product_top'>
+            <h2 className='product_title'>{title}</h2>
+            {productAdded ? <span className='product_added_mark'>✓</span> : null}
+          </div>
           <div className='product_bottom'>
-            <h2 className='product_price'>${price}</h2>
+            <h2 className='product_price'>$ {price}</h2>
             <button className='add_to_cart_button' onClick={() => addProduct(product)}>
               Add To Cart
             </button>

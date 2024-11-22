@@ -34,9 +34,10 @@
   margin: 0px 10px;
 }
 
-.cart_item_decrease_button, .cart_item_increase_button {
+.cart_item_decrease_button,
+.cart_item_increase_button {
   border: none;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   font-weight: bold;
   font-size: 24px;
   padding: 0px;
@@ -52,7 +53,7 @@
 }
 
 .cart_item_delete_button {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   position: relative;
   width: 30px;
   height: 30px;
@@ -77,3 +78,9 @@
   opacity: 0.5;
 }
 
+@media screen and (max-width: 540px) {
+  .cart_item {
+    flex-direction: column;
+    text-align: center;
+  }
+}

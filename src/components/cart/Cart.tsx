@@ -85,8 +85,11 @@ export const Cart = () => {
           <div className='cart'>
             <div className='cart_left'>
               <div className='cart_left_top'>
-                <h1>Shopping Cart</h1>
+                <h1 className='cart_left_top_title'>Shopping Cart</h1>
                 <h3 className='cart_products_amount'>{itemsAmount} items</h3>
+                <button onClick={() => setShowCart(false)} className='cart_left_close_cart_button'>
+                  X
+                </button>
               </div>
               <div className={`cart_products ${cartProducts.length === 0 ? 'empty' : ''}`}>
                 {cartProducts.map((product, index) => (

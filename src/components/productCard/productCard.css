@@ -1,5 +1,6 @@
 .product_background {
   border-radius: 10px;
+  width: 100%;
   max-width: 100%;
   border: 3px solid #ecebeb;
   transition: 0.2s ease-in-out;
@@ -42,8 +43,9 @@
 }
 
 .product_title {
-  text-align: center;
   margin: 0px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .add_to_cart_button {
@@ -96,11 +98,30 @@
   background-color: #5cbdb9;
 }
 
+.product_top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
 .product_added_mark {
-  position: absolute;
-  right: 20px;
-  top: -10px;
-  transition: 0.2s ease-in-out;
   font-size: 50px;
   color: #5cbdb9;
+  margin-left: 10px;
+  transition: 0.2s ease-in-out;
+  line-height: 0;
+}
+
+@media screen and (max-width: 360px) {
+  .product_title {
+    text-overflow: clip;
+    white-space: normal;
+  }
+}
+
+@media screen and (max-width: 270px) {
+  .product_bottom {
+    flex-direction: column;
+  }
 }

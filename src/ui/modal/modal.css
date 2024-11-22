@@ -15,7 +15,6 @@
   background-color: #a28089;
   border-radius: 10px;
   padding: 20px;
-  width: auto;
   min-height: 100px;
   position: relative;
   color: #ffffff;
@@ -79,5 +78,23 @@
 
   .modal_title {
     font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 825px) {
+  .modal {
+    width: 450px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .modal {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .modal {
+    width: 200px;
   }
 }
