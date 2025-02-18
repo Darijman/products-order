@@ -29,6 +29,7 @@ export const useCartStore = create<CartState>()(
         set(() => {
           return {
             cartProducts: [],
+            shippingPrice: 5,
           };
         });
       },

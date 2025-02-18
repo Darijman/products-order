@@ -1,5 +1,6 @@
 .nav_link {
   color: #ffffff;
+  cursor: pointer;
 }
 
 .nav_link_caret {

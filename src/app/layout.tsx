@@ -1,9 +1,13 @@
 import { Inconsolata } from 'next/font/google';
-import './globals.css';
 import { Header } from '../ui/header/Header';
 import { Cart } from '../components/cart/Cart';
+import './globals.css';
 
 const inconsolata = Inconsolata({ subsets: ['latin'] });
+
+export const metadata = {
+  title: 'Products-Order',
+};
 
 export default function RootLayout({
   children,

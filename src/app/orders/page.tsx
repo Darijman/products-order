@@ -38,16 +38,18 @@ const Orders = () => {
     <>
       <div>
         <h1 className='orders_title'>Your Orders {orders.length >= 1 ? `(${orders.length})` : null}</h1>
-        <div style={{ marginBottom: '20px' }}>
-          <label htmlFor='orders_sort' style={{ marginRight: '5px', fontWeight: 'bold', fontSize: '18px' }}>
-            Sort orders:
-          </label>
-          <select id='orders_sort' className='orders_sort' value={sortedByFromURL} onChange={sortedByOnChangeHandler}>
-            <option value='DEFAULT'>By Default</option>
-            <option value='DELIVERED'>By Delivered</option>
-            <option value='TOTALPRICE'>By Total Price</option>
-          </select>
-        </div>
+        {orders.length ? (
+          <div style={{ marginBottom: '20px' }}>
+            <label htmlFor='orders_sort' style={{ marginRight: '5px', fontWeight: 'bold', fontSize: '18px' }}>
+              Sort orders:
+            </label>
+            <select id='orders_sort' className='orders_sort' value={sortedByFromURL} onChange={sortedByOnChangeHandler}>
+              <option value='DEFAULT'>By Default</option>
+              <option value='DELIVERED'>By Delivered</option>
+              <option value='TOTALPRICE'>By Total Price</option>
+            </select>
+          </div>
+        ) : null}
       </div>
       <div>
         {sortedOrders.map((order, index) => (

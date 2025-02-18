@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## products-order - A simple market place where you can order products.
 
-## Getting Started
+It is built using:
 
-First, run the development server:
+- Next.js
+- TypeScript
+- Css
+- Nanoid (for id)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 👾 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Find special products by category.
+- Add products to your shopping cart.
+- Delete or update amount of product in your shopping cart.
+- Check your orders.
+- Change order status (Delivered).
+- Delete any order.
+- Sort orders (Default, TotalPrice, Delivered).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📒 Process
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+I started by creating header. 
 
-## Learn More
+Then I added product card design. 
 
-To learn more about Next.js, take a look at the following resources:
+Afterwards i created states for cart, orders and products using framework zustand.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Also i created page /orders for checking your personal orders. You can sort them by (Default, TotalPrice, Delivered).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+After that, I added a modal and a loader for better UI.
 
-## Deploy on Vercel
+And finally made adaptive layout for different screens.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**NOTE:** The project's purpose is to test zustand and try to create my own design.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚦 Running the Project
+
+To run the project in your local environment, follow these steps:
+1. Clone the repository to your local machine.
+2. Run `npm install` or `yarn` in the project directory to install the required dependencies.
+3. Run `npm run dev` or `yarn dev` to get the project started.
+4. Open [http://localhost:3000](http://localhost:3000) (or the address shown in your console) in your web browser to view the app.
+
+## 📹 Video
+
+https://github.com/user-attachments/assets/7400737a-7863-4b8b-8d1f-8dddec449c01

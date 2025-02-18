@@ -79,6 +79,11 @@ export const WebHeader = () => {
         )}
       </ul>
       <ul className='header_list'>
+        <li className='header_list_item'>
+          <Link href='/orders' className='nav_link'>
+            Your Orders
+          </Link>
+        </li>
         <li onClick={() => setShowCart(true)} className='header_list_item shopping_cart'>
           Shopping Cart {cartItemsAmount >= 1 ? `(${cartItemsAmount})` : null}
         </li>
