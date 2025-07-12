@@ -5,6 +5,7 @@ It is built using:
 - Next.js
 - TypeScript
 - Css
+- Zustand
 - Nanoid (for id)
 
 ## 👾 Features
